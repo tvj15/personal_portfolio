@@ -205,11 +205,15 @@ h6 {
   position: relative;
 }
 
-@media (max-width: 991px) {
+.mobile-text-justify {
+  text-align: justify;
+}
+
+/* @media (max-width: 991px) {
   .mobile-text-justify {
     text-align: justify;
   }
-}
+} */
 
 /*--------------------------------------------------------------
 # Sections General
@@ -402,15 +406,27 @@ section .container {
   background: rgba(255, 255, 255, 0.12);
 }
 
-#resume-download {
-  width: fit-content;
+#resume-count {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#resume-count .icon-box {
+  padding: 10px;
+}
+#resume-count i {
+  font-size: 24px;
 }
 
 @media (max-width: 991px) {
-  #resume-download {
-    width: 100%;
+  #resume-count {
+    flex-direction: column;
   }
-  #resume-download .icon-box {
+  #resume-count .icon-box {
+    margin-top: 20px;
+    width: 100%;
+    align-items: center;
     justify-content: center;
   }
 }

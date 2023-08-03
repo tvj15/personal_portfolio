@@ -27,16 +27,6 @@
       }
     }
   };
-
-  /*
-   * Mobile nav toggle
-   */
-  on("click", ".mobile-nav-toggle", function (e) {
-    select("#navbar").classList.toggle("navbar-mobile");
-    this.classList.toggle("bi-list");
-    this.classList.toggle("bi-x");
-  });
-
   /**
    * Scrool with ofset on links with a class name .scrollto
    */
@@ -72,40 +62,7 @@
     true
   );
 
-  //   const links = document.querySelectorAll("a");
-
-  //   window.addEventListener("scroll", () => {
-  //     let scrollPosition = window.scrollY;
-  //     let sections = select("section", true);
-  //     let links = select("#navbar .nav-link", true);
-  //     let navbar = select("#navbar");
-
-  //     if (scrollPosition >= 480) {
-  //       if (!navbar.classList.contains("navbar-top")) {
-  //         navbar.classList.add("navbar-top");
-  //       }
-  //       console.log("here1");
-  //     } else {
-  //       if (navbar.classList.contains("navbar-top")) {
-  //         navbar.classList.remove("navbar-top");
-  //       }
-  //       console.log("here2");
-  //     }
-  //     // sections.forEach((section) => {
-  //     //   if (scrollPosition >= section.offsetTop) {
-  //     //     links.forEach((link) => {
-  //     //       link.classList.remove("active");
-  //     //       if (
-  //     //         section.getAttribute("id") ===
-  //     //         link.getAttribute("href").substring(1)
-  //     //       ) {
-  //     //         link.classList.add("active");
-  //     //       }
-  //     //     });
-  //     //   }
-  //     // });
-  //   });
-
+  
   /**
    * Skills animation
    */
@@ -113,7 +70,7 @@
   if (skilsContent) {
     new Waypoint({
       element: skilsContent,
-      offset: "80%",
+      offset: "100%",
       handler: function (direction) {
         let progress = select(".progress .progress-bar", true);
         progress.forEach((el) => {
@@ -127,17 +84,6 @@
    * Initiate Pure Counter
    */
   new PureCounter();
-
-  // const sendEmail = () => {
-  //   Email.send({
-  //     Host: "smtp.elasticemail.com",
-  //     Username: "username",
-  //     Password: "password",
-  //     To: "them@website.com",
-  //     From: "you@isp.com",
-  //     Subject: "This is the subject",
-  //     Body: "And this is the body",
-  //   }).then((message) => alert(message));
-  // };
-
+  // let clicks_count = select("#clicks_count");
+  clicks_count.setAttribute("data-purecounter-end", "26")
 })();
