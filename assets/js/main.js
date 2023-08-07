@@ -89,33 +89,34 @@
   /**
    * DynamoDB stuff
    */
-  AWS.config.region = "us-west-1";
-  AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: process.env.IDENTITY_POOL_ID,
-  });
-  const dynamodb = new AWS.DynamoDB();
+  // AWS.config.region = process.env.AWS_REGION;
+  // AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+  //   IdentityPoolId: process.env.IDENTITY_POOL_ID,
+  // });
+  // const dynamodb = new AWS.DynamoDB();
 
-  let params = {
-    Item: {
-      clickTime: {
-        N: Date.now().toString(),
-      },
-    },
-    TableName: "PortfolioClicks",
-  };
-  dynamodb.putItem(params, function (err, data) {
-    if (err) console.log(err, err.stack); // an error occurred
-  });
+  // let params = {
+  //   Item: {
+  //     clickTime: {
+  //       N: Date.now().toString(),
+  //     },
+  //   },
+  //   TableName: "PortfolioClicks",
+  // };
+  // dynamodb.putItem(params, function (err, data) {
+  //   if (err) console.log(err, err.stack); // an error occurred
+  // });
 
-  params = {
-    AttributesToGet: ["clickTime"],
-    TableName: "PortfolioClicks",
-  };
-  dynamodb.scan(params, function (err, data) {
-    if (err) console.log(err, err.stack); // an error occurred
-    else {
-      clicks_count.setAttribute("data-purecounter-end", data.Count.toString());
-      clicks_count.style.display = "block";
-    }
-  });
+  // params = {
+  //   AttributesToGet: ["clickTime"],
+  //   TableName: "PortfolioClicks",
+  // };
+  // dynamodb.scan(params, function (err, data) {
+  //   if (err) console.log(err, err.stack); // an error occurred
+  //   else {
+  //     // clicks_count.setAttribute("data-purecounter-end", data.Count.toString());
+  //     clicks_count.style.display = "block";
+  //   }
+  // });
+  clicks_count.setAttribute("data-purecounter-end", 54);
 })();
