@@ -62,7 +62,6 @@
     true
   );
 
-  
   /**
    * Skills animation
    */
@@ -84,6 +83,39 @@
    * Initiate Pure Counter
    */
   new PureCounter();
-  // let clicks_count = select("#clicks_count");
-  clicks_count.setAttribute("data-purecounter-end", "26")
+
+  let clicks_count = select("#clicks_count");
+
+  /**
+   * DynamoDB stuff
+   */
+  AWS.config.region = "us-west-1";
+  AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+    IdentityPoolId: process.env.IDENTITY_POOL_ID,
+  });
+  const dynamodb = new AWS.DynamoDB();
+
+  let params = {
+    Item: {
+      clickTime: {
+        N: Date.now().toString(),
+      },
+    },
+    TableName: "PortfolioClicks",
+  };
+  dynamodb.putItem(params, function (err, data) {
+    if (err) console.log(err, err.stack); // an error occurred
+  });
+
+  params = {
+    AttributesToGet: ["clickTime"],
+    TableName: "PortfolioClicks",
+  };
+  dynamodb.scan(params, function (err, data) {
+    if (err) console.log(err, err.stack); // an error occurred
+    else {
+      clicks_count.setAttribute("data-purecounter-end", data.Count.toString());
+      clicks_count.style.display = "block";
+    }
+  });
 })();
