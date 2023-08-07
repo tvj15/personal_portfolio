@@ -119,4 +119,5 @@
   //   }
   // });
   clicks_count.setAttribute("data-purecounter-end", 54);
+  clicks_count.style.display = "block";
 })();
